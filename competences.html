@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compétences — Noha Beauvais Bamas</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* tech badge grid */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .badge {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+      text-align: center;
+    }
+
+    .badge:hover {
+      border-color: rgba(0,229,195,0.3);
+      transform: translateY(-2px);
+    }
+
+    .badge-icon { font-size: 1.6rem; line-height: 1; }
+    .badge-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      letter-spacing: 0.03em;
+    }
+
+    /* skill bar section */
+    .bars-section { margin-top: 1rem; }
+
+    /* soft skill chips */
+    .soft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .soft-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .soft-chip:hover {
+      border-color: rgba(0,229,195,0.25);
+      transform: translateY(-2px);
+    }
+
+    .soft-chip .chip-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    .soft-chip .chip-text {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* full-width section */
+    .full-row {
+      grid-column: 1 / -1;
+    }
+
+    /* level indicator */
+    .level-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      margin-right: 3px;
+    }
+
+    .l-filled { background: var(--accent); }
+    .l-empty  { background: var(--surface2); border: 1px solid var(--border2); }
+
+    @media (max-width: 700px) {
+      .skills-layout { grid-template-columns: 1fr; }
+      .badge-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">NBB<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"     >Présentation</a></li>
+    <li><a href="parcours.html"  >Parcours</a></li>
+    <li><a href="projets.html"   >Projets</a></li>
+    <li><a href="missions.html"  >Missions</a></li>
+    <li><a href="veille.html"    >Veille Tech</a></li>
+    <li><a href="competences.html" class="active">Compétences</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="wrapper">
+
+    <div class="page-header">
+      <div class="eyebrow">Mon arsenal</div>
+      <h1>Compétences acquises</h1>
+      <p class="sub">Technologies maîtrisées, outils utilisés et qualités personnelles développées au fil des projets.</p>
+    </div>
+
+    <div class="skills-layout">
+
+      <!-- COL 1 : Développement Web -->
+      <div class="card" style="animation-delay:0.05s">
+        <div class="section-heading">🌐 Développement Web</div>
+
+        <div class="badge-grid">
+          <div class="badge">
+            <span class="badge-icon">🎨</span>
+            <span class="badge-name">HTML5</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">✨</span>
+            <span class="badge-name">CSS3</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">⚡</span>
+            <span class="badge-name">JavaScript</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🐘</span>
+            <span class="badge-name">PHP</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🗄️</span>
+            <span class="badge-name">SQL</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🔒</span>
+            <span class="badge-name">PDO</span>
+          </div>
+        </div>
+
+        <div class="bars-section" style="margin-top:1.5rem;">
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">HTML / CSS</span>
+              <span class="skill-pct">85%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:85%;--delay:0.1s"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-pct">70%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:70%;--delay:0.18s"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">PHP / PDO</span>
+              <span class="skill-pct">72%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:72%;--delay:0.26s"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">SQL / MySQL</span>
+              <span class="skill-pct">68%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:68%;--delay:0.34s"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 2 : Autres langages & outils -->
+      <div class="card" style="animation-delay:0.1s">
+        <div class="section-heading">🔧 Langages &amp; Outils</div>
+
+        <div class="badge-grid">
+          <div class="badge">
+            <span class="badge-icon">🐍</span>
+            <span class="badge-name">Python</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">☕</span>
+            <span class="badge-name">Java</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🐧</span>
+            <span class="badge-name">Linux</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🐳</span>
+            <span class="badge-name">Docker</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🌿</span>
+            <span class="badge-name">Git</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">📊</span>
+            <span class="badge-name">JMerise</span>
+          </div>
+        </div>
+
+        <div class="bars-section" style="margin-top:1.5rem;">
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Python / Tkinter</span>
+              <span class="skill-pct">45%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:45%;--delay:0.15s"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Java</span>
+              <span class="skill-pct">55%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:55%;--delay:0.22s"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Linux (CLI)</span>
+              <span class="skill-pct">47%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:47%;--delay:0.3s"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Git / GitHub</span>
+              <span class="skill-pct">70%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:70%;--delay:0.38s"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Docker</span>
+              <span class="skill-pct">35%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="--w:35%;--delay:0.46s"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modélisation -->
+      <div class="card" style="animation-delay:0.15s">
+        <div class="section-heading">📐 Modélisation &amp; Méthodes</div>
+
+        <div class="badge-grid">
+          <div class="badge">
+            <span class="badge-icon">🗺️</span>
+            <span class="badge-name">MCD</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🔀</span>
+            <span class="badge-name">JMerise</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">📝</span>
+            <span class="badge-name">MLD</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🏗️</span>
+            <span class="badge-name">MVC</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">📮</span>
+            <span class="badge-name">SMTP</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🔐</span>
+            <span class="badge-name">Sessions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Langues -->
+      <div class="card" style="animation-delay:0.2s">
+        <div class="section-heading">🌍 Langues</div>
+        <div class="skill-item" style="margin-top:0.5rem">
+          <div class="skill-row">
+            <span class="skill-name">🇫🇷 Français</span>
+            <span class="skill-pct">Natif</span>
+          </div>
+          <div class="skill-track"><div class="skill-fill" style="--w:100%;--delay:0.1s"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <span class="skill-name">🇬🇧 Anglais</span>
+            <span class="skill-pct">B2</span>
+          </div>
+          <div class="skill-track"><div class="skill-fill" style="--w:72%;--delay:0.2s"></div></div>
+        </div>
+      </div>
+
+      <!-- SOFT SKILLS - full width -->
+      <div class="card full-row" style="animation-delay:0.25s">
+        <div class="section-heading">💡 Soft Skills</div>
+        <div class="soft-grid">
+          <div class="soft-chip">
+            <span class="chip-icon">🤝</span>
+            <span class="chip-text">Esprit d'équipe</span>
+          </div>
+          <div class="soft-chip">
+            <span class="chip-icon">👂</span>
+            <span class="chip-text">Sens de l'écoute</span>
+          </div>
+          <div class="soft-chip">
+            <span class="chip-icon">🎯</span>
+            <span class="chip-text">Autonome</span>
+          </div>
+          <div class="soft-chip">
+            <span class="chip-icon">🔄</span>
+            <span class="chip-text">Flexible &amp; polyvalente</span>
+          </div>
+          <div class="soft-chip">
+            <span class="chip-icon">🛡️</span>
+            <span class="chip-text">Fiable &amp; engagé</span>
+          </div>
+          <div class="soft-chip">
+            <span class="chip-icon">✨</span>
+            <span class="chip-text">Positive &amp; enthousiaste</span>
+          </div>
+          <div class="soft-chip">
+            <span class="chip-icon">🔍</span>
+            <span class="chip-text">Curiosité intellectuelle</span>
+          </div>
+          <div class="soft-chip">
+            <span class="chip-icon">🧩</span>
+            <span class="chip-text">Résolution de problèmes</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /skills-layout -->
+
+  </div>
+</main>
+
+</body>
+</html>

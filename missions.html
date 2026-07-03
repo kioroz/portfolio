@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Missions — Noha Beauvais Bamas</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .mission-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .mission-card:hover {
+      border-color: rgba(0,229,195,0.22);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    }
+
+    .mission-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+    }
+
+    .mission-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .mission-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .mission-period {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+      padding: 0.22rem 0.6rem;
+      background: rgba(0,229,195,0.08);
+      border: 1px solid rgba(0,229,195,0.2);
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+
+    .mission-org {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-bottom: 0.8rem;
+    }
+
+    .mission-desc {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .mission-tasks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .mission-tasks li {
+      font-size: 0.84rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .mission-tasks li::before {
+      content: '▸';
+      color: var(--accent);
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      margin-top: 0.1rem;
+    }
+
+    .missions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* placeholder card */
+    .placeholder-card {
+      background: var(--surface);
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      animation: fadeUp 0.5s ease 0.2s both;
+    }
+
+    .placeholder-card .ph-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      opacity: 0.4;
+    }
+
+    .placeholder-card p {
+      font-size: 0.88rem;
+      max-width: 380px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .mission-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">NBB<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"     >Présentation</a></li>
+    <li><a href="parcours.html"  >Parcours</a></li>
+    <li><a href="projets.html"   >Projets</a></li>
+    <li><a href="missions.html"  class="active">Missions</a></li>
+    <li><a href="veille.html"    >Veille Tech</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="wrapper">
+
+    <div class="page-header">
+      <div class="eyebrow">Terrain professionnel</div>
+      <h1>Missions en entreprise</h1>
+      <p class="sub">Stages, alternances et expériences professionnelles en milieu réel.</p>
+    </div>
+
+    <div class="missions-list">
+
+      <!-- MISSION 1 : Institut Curie -->
+      <div class="mission-card" style="animation: fadeUp 0.5s ease 0.05s both;">
+        <div class="mission-icon">🏥</div>
+        <div>
+          <div class="mission-header">
+            <div class="mission-title">Agent de Service Hospitalier</div>
+            <span class="mission-period">Juillet 2025</span>
+          </div>
+          <div class="mission-org">Institut Curie — Service Pédiatrie · Paris</div>
+          <p class="mission-desc">
+            Mission en milieu hospitalier au sein du service pédiatrie de l'Institut Curie,
+            l'un des établissements de référence en oncologie en France.
+            Travail dans un environnement exigeant nécessitant rigueur, discrétion et sens
+            de l'humain.
+          </p>
+          <ul class="mission-tasks">
+            <li>Travail en équipe pluridisciplinaire dans un service pédiatrique</li>
+            <li>Respect des protocoles d'hygiène et de sécurité hospitaliers</li>
+            <li>Développement du sens de l'écoute et de l'empathie</li>
+            <li>Gestion du stress et adaptabilité dans un environnement sensible</li>
+          </ul>
+          <div class="tags">
+            <span class="tag tag-pink">Travail en équipe</span>
+            <span class="tag tag-pink">Rigueur</span>
+            <span class="tag tag-pink">Sens de l'écoute</span>
+            <span class="tag tag-pink">Gestion du stress</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDER pour futures missions -->
+      <div class="placeholder-card">
+        <div class="ph-icon">🔮</div>
+        <p>
+          Les prochaines missions en entreprise (stages BTS, alternance…)
+          seront ajoutées ici au fur et à mesure de mon parcours.
+          <br><br>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

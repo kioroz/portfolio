@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projets — Noha Beauvais Bamas</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* featured project */
+    .project-featured {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      animation: fadeUp 0.5s ease 0.05s both;
+    }
+
+    .project-featured:hover {
+      border-color: rgba(0,229,195,0.25);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    }
+
+    .project-banner {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner-zoo {
+      background: linear-gradient(135deg, #0d1f1a 0%, #0f1e12 50%, #1a1208 100%);
+    }
+
+    .banner-portfolio {
+      background: linear-gradient(135deg, #0f0f20 0%, #1a0d2e 50%, #0d1525 100%);
+    }
+
+    .banner-python {
+      background: linear-gradient(135deg, #1a1200 0%, #0f1a20 50%, #180a0a 100%);
+    }
+
+    .banner-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .banner-emoji {
+      font-size: 3.5rem;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 0 20px rgba(0,229,195,0.3));
+    }
+
+    .banner-number {
+      position: absolute;
+      bottom: 12px; right: 16px;
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      user-select: none;
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-type {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .project-date {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.55rem;
+      line-height: 1.25;
+    }
+
+    .project-desc {
+      font-size: 0.87rem;
+      color: var(--text-dim);
+      line-height: 1.72;
+    }
+
+    /* feature list */
+    .feature-list {
+      list-style: none;
+      margin-top: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .feature-list li {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .feature-list li::before {
+      content: '›';
+      color: var(--accent);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    /* github link */
+    .project-links {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.1rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">NBB<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"     >Présentation</a></li>
+    <li><a href="parcours.html"  >Parcours</a></li>
+    <li><a href="projets.html"   class="active">Projets</a></li>
+    <li><a href="missions.html"  >Missions</a></li>
+    <li><a href="veille.html"    >Veille Tech</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="wrapper">
+
+    <div class="page-header">
+      <div class="eyebrow">Ce que j'ai construit</div>
+      <h1>Projets réalisés</h1>
+      <p class="sub">Projets développés dans le cadre de ma formation BTS SIO SLAM et en autonomie.</p>
+    </div>
+
+    <div class="card-grid">
+
+      <!-- PROJET 1 : ZOO -->
+      <div class="project-featured">
+        <div class="project-banner banner-zoo">
+          <div class="banner-grid"></div>
+          <div class="banner-emoji">🦁</div>
+          <div class="banner-number">01</div>
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-type">Application Web</span>
+            <span class="project-date">BTS SIO — 2025/2026</span>
+          </div>
+          <div class="project-title">Gestion de Zoo — Zoo de Palmyre</div>
+          <p class="project-desc">
+            Application web complète de gestion pour le Zoo de Palmyre.
+            Système full-stack avec authentification par rôles et interface d'administration.
+          </p>
+          <ul class="feature-list">
+            <li>Gestion des animaux, espèces et enclos</li>
+            <li>Gestion du personnel avec contrôle d'accès par rôle (Employé / Directeur)</li>
+            <li>Authentification sécurisée via sessions PHP</li>
+            <li>Accès base de données sécurisé via PDO</li>
+          </ul>
+          <div class="tags">
+            <span class="tag tag-green">HTML / CSS</span>
+            <span class="tag tag-green">JavaScript</span>
+            <span class="tag tag-purple">PHP</span>
+            <span class="tag tag-purple">MySQL</span>
+            <span class="tag tag-dim">Sessions</span>
+            <span class="tag tag-dim">PDO</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/kioroz" target="_blank" class="btn btn-outline">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.74-1.33-1.74-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 2 : PORTFOLIO -->
+      <div class="project-featured">
+        <div class="project-banner banner-portfolio">
+          <div class="banner-grid"></div>
+          <div class="banner-emoji">🌐</div>
+          <div class="banner-number">02</div>
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-type">Site Web Full-Stack</span>
+            <span class="project-date">BTS SIO — 2025/2026</span>
+          </div>
+          <div class="project-title">Site Portfolio — HTML/CSS/PHP/SQL</div>
+          <p class="project-desc">
+            Prototype de site web de type portfolio développé en full-stack.
+            Système d'inscription, de connexion et de contact entièrement fonctionnel.
+          </p>
+          <ul class="feature-list">
+            <li>Création et gestion de la base de données (MySQL)</li>
+            <li>Formulaires de connexion et d'inscription via PDO</li>
+            <li>Formulaire de contact avec envoi d'e-mail via SMTP</li>
+            <li>Architecture MVC et code modulaire</li>
+          </ul>
+          <div class="tags">
+            <span class="tag tag-green">HTML / CSS</span>
+            <span class="tag tag-purple">PHP</span>
+            <span class="tag tag-purple">SQL</span>
+            <span class="tag tag-dim">PDO</span>
+            <span class="tag tag-dim">SMTP</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/kioroz" target="_blank" class="btn btn-outline">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.74-1.33-1.74-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      
+    </div><!-- /card-grid -->
+
+  </div>
+</main>
+
+</body>
+</html>

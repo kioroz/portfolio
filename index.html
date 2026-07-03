@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noha Beauvais Bamas — Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ─── HERO ─── */
+    .hero {
+      min-height: calc(100vh - 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3.5rem;
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+      align-items: end;
+      animation: fadeUp 0.65s ease both;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+
+    .status-dot {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2.2s ease infinite;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-name .outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--accent);
+    }
+
+    .hero-role {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--text-dim);
+      font-weight: 300;
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-role strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+
+    /* avatar placeholder */
+    .avatar-box {
+      width: 190px; height: 190px;
+      border-radius: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,195,0.04), rgba(123,111,255,0.04));
+    }
+
+    .avatar-box svg { width: 44px; height: 44px; opacity: 0.25; }
+
+    /* ─── STATS ─── */
+    .stats-row {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+      animation: fadeUp 0.65s ease 0.15s both;
+    }
+
+    .stat-cell {
+      padding: 1.5rem 2.5rem 1.5rem 0;
+      margin-right: 2.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat-cell:first-child { padding-left: 0; }
+    .stat-cell:last-child  { border-right: none; }
+
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--text);
+    }
+    .stat-val span { color: var(--accent); }
+
+    .stat-lbl {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.2rem;
+    }
+
+    /* ─── ABOUT SECTION ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 1rem;
+      animation: fadeUp 0.65s ease 0.25s both;
+    }
+
+    .about-body {
+      font-size: 0.93rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .about-body strong { color: var(--text); font-weight: 500; }
+
+    /* info list */
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+
+    .info-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.84rem;
+    }
+
+    .ii-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+    .ii-label {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    .ii-val  { color: var(--text); display: block; }
+    .ii-link { color: var(--accent); text-decoration: none; }
+    .ii-link:hover { text-decoration: underline; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.8); }
+    }
+
+    @media (max-width: 700px) {
+      .hero-top   { grid-template-columns: 1fr; }
+      .avatar-box { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .stat-cell  { padding: 1rem 1.5rem 1rem 0; margin-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">NBB<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"       class="active">Présentation</a></li>
+    <li><a href="parcours.html"              >Parcours</a></li>
+    <li><a href="projets.html"               >Projets</a></li>
+    <li><a href="missions.html"              >Missions</a></li>
+    <li><a href="veille.html"                >Veille Tech</a></li>
+    <li><a href="competences.html"           >Compétences</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="wrapper">
+    <div class="hero">
+
+      <!-- HERO TOP -->
+      <div class="hero-top">
+        <div>
+          <div class="status-badge">
+            <div class="status-dot"></div>
+            Développeur Front / Back
+          </div>
+
+          <h1 class="hero-name">
+            Noha<br>
+            <span class="outline">Beauvais</span><br>
+            Bamas
+          </h1>
+
+          <p class="hero-role">
+            Étudiant en <strong>BTS SIO SLAM</strong> · Passionné par le développement web,
+            la cybersécurité et les nouvelles technologies.
+            Née le 03/01/2007 · Nationalité française.
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://www.linkedin.com/in/noha-beauvais-bamas-716506382/" target="_blank" class="btn btn-accent">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </a>
+            <a href="CV_Noha_BEAUVAIS-BAMAS.pdf" download class="btn btn-outline">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Télécharger CV
+            </a>
+          </div>
+        </div>
+
+        <div class="avatar-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M5.5 20a7 7 0 0 1 13 0"/>
+          </svg>
+          <span>Photo</span>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-row">
+        <div class="stat-cell">
+          <div class="stat-val">1<span>re</span></div>
+          <div class="stat-lbl">Année BTS SIO</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val">2<span>+</span></div>
+          <div class="stat-lbl">Projets réalisés</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val">B2</div>
+          <div class="stat-lbl">Niveau anglais</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val">8<span>+</span></div>
+          <div class="stat-lbl">Technologies maîtrisées</div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="about-grid">
+        <div class="card">
+          <div class="section-heading">À propos</div>
+          <p class="about-body">
+            Passionné d'informatique depuis le lycée, j'ai choisi le <strong>BTS SIO option SLAM</strong>
+            pour me spécialiser dans le développement logiciel et les applications métiers.
+            J'ai déjà réalisé plusieurs projets concrets : une <strong>application web de gestion de zoo</strong>,
+            un <strong>site portfolio complet</strong> avec base de données, et un <strong>outil Python de
+            conversion monétaire</strong> en Tkinter.
+            <br><br>
+            Curieux et autonome, je m'intéresse également à la <strong>cybersécurité</strong>,
+            aux nouvelles technos comme <strong>Rust</strong> et aux APIs modernes.
+            En dehors du code, je suis passionné par la culture tech et les jeux vidéo.
+          </p>
+          <div class="tags" style="margin-top:1.2rem;">
+            <span class="tag tag-green">Esprit d'équipe</span>
+            <span class="tag tag-green">Autonome</span>
+            <span class="tag tag-green">Flexible</span>
+            <span class="tag tag-green">Fiable &amp; engagé</span>
+            <span class="tag tag-green">Positive &amp; enthousiaste</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-heading">Informations</div>
+          <ul class="info-list">
+            <li>
+              <span class="ii-icon">📍</span>
+              <div>
+                <span class="ii-label">Localisation</span>
+                <span class="ii-val">Villiers-sur-Orge, Île-de-France</span>
+              </div>
+            </li>
+            <li>
+              <span class="ii-icon">📅</span>
+              <div>
+                <span class="ii-label">Date de naissance</span>
+                <span class="ii-val">03 janvier 2007</span>
+              </div>
+            </li>
+            <li>
+              <span class="ii-icon">✉️</span>
+              <div>
+                <span class="ii-label">Email</span>
+                <a href="mailto:nohabeauvais@gmail.com" class="ii-link">nohabeauvais@gmail.com</a>
+              </div>
+            </li>
+            <li>
+              <span class="ii-icon">📞</span>
+              <div>
+                <span class="ii-label">Téléphone</span>
+                <span class="ii-val">06 10 85 42 14</span>
+              </div>
+            </li>
+            <li>
+              <span class="ii-icon">🔗</span>
+              <div>
+                <span class="ii-label">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/noha-beauvais-bamas-716506382/" target="_blank" class="ii-link">Voir le profil →</a>
+              </div>
+            </li>
+            <li>
+              <span class="ii-icon">💻</span>
+              <div>
+                <span class="ii-label">GitHub</span>
+                <a href="https://github.com/kioroz" target="_blank" class="ii-link">github.com/kioroz →</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /hero -->
+  </div>
+</main>
+
+</body>
+</html>

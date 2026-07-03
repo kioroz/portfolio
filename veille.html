@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veille Technologique — Noha Beauvais Bamas</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* tabs */
+    .tabs {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 2.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.3rem;
+      width: fit-content;
+      animation: fadeUp 0.5s ease 0.05s both;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    .tab-btn.active {
+      background: var(--surface2);
+      color: var(--text);
+    }
+
+    .tab-btn.active.rust  { color: var(--accent2); background: rgba(255,94,132,0.1); }
+    .tab-btn.active.api   { color: var(--accent);  background: rgba(0,229,195,0.1);  }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* article cards */
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .article-card:hover {
+      border-color: rgba(0,229,195,0.22);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+    }
+
+    .article-card.rust-card:hover {
+      border-color: rgba(255,94,132,0.25);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .article-source {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .source-rust { background: rgba(255,94,132,0.1); color: var(--accent2); }
+    .source-api  { background: rgba(0,229,195,0.1);  color: var(--accent);  }
+
+    .article-date {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .article-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .article-summary {
+      font-size: 0.86rem;
+      color: var(--text-dim);
+      line-height: 1.72;
+      flex: 1;
+    }
+
+    .article-takeaway {
+      background: var(--surface2);
+      border-left: 2px solid var(--accent);
+      padding: 0.75rem 0.9rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.83rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    .article-takeaway.rust-take {
+      border-left-color: var(--accent2);
+    }
+
+    .article-takeaway strong {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    /* intro banner */
+    .veille-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.5s ease 0.1s both;
+    }
+
+    .topic-card {
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      border: 1px solid;
+    }
+
+    .topic-rust {
+      background: rgba(255,94,132,0.05);
+      border-color: rgba(255,94,132,0.2);
+    }
+
+    .topic-api {
+      background: rgba(0,229,195,0.05);
+      border-color: rgba(0,229,195,0.2);
+    }
+
+    .topic-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .topic-emoji { font-size: 1.6rem; }
+
+    .topic-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .topic-rust .topic-name { color: var(--accent2); }
+    .topic-api  .topic-name { color: var(--accent);  }
+
+    .topic-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .veille-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .veille-intro { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">NBB<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"     >Présentation</a></li>
+    <li><a href="parcours.html"  >Parcours</a></li>
+    <li><a href="projets.html"   >Projets</a></li>
+    <li><a href="missions.html"  >Missions</a></li>
+    <li><a href="veille.html"    class="active">Veille Tech</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="wrapper">
+
+    <div class="page-header">
+      <div class="eyebrow">Curiosité technologique</div>
+      <h1>Veille technologique</h1>
+      <p class="sub">Exploration et suivi des évolutions technologiques sur deux sujets clés : le langage Rust et les APIs modernes.</p>
+    </div>
+
+    <!-- TOPIC INTRO -->
+    <div class="veille-intro">
+      <div class="topic-card topic-rust">
+        <div class="topic-header">
+          <span class="topic-emoji">🦀</span>
+          <span class="topic-name">Rust</span>
+        </div>
+        <p class="topic-desc">
+          Langage de programmation système axé sur la <strong style="color:var(--text)">sécurité mémoire</strong>,
+          les performances et la concurrence. En pleine montée en popularité, adopté par
+          Linux, Firefox, Android et Microsoft.
+        </p>
+      </div>
+      <div class="topic-card topic-api">
+        <div class="topic-header">
+          <span class="topic-emoji">⚡</span>
+          <span class="topic-name">APIs modernes</span>
+        </div>
+        <p class="topic-desc">
+          Architectures REST, GraphQL, WebSocket et gRPC qui alimentent les applications
+          modernes. Suivi des <strong style="color:var(--text)">bonnes pratiques</strong>,
+          de la sécurité et des nouveaux standards.
+        </p>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active rust" onclick="switchTab('rust', this)">🦀 Rust</button>
+      <button class="tab-btn api"         onclick="switchTab('api',  this)">⚡ APIs</button>
+    </div>
+
+    <!-- RUST PANEL -->
+    <div id="tab-rust" class="tab-panel active">
+      <div class="veille-grid">
+
+        <div class="article-card rust-card">
+          <div class="article-meta">
+            <span class="article-source source-rust">Rust Blog</span>
+            <span class="article-date">2024</span>
+          </div>
+          <div class="article-title">Pourquoi Rust remplace C++ dans les projets critiques ?</div>
+          <p class="article-summary">
+            Rust propose un modèle de mémoire unique basé sur l'ownership et le borrow checker
+            qui empêche les erreurs mémoire à la compilation. Des entreprises comme Microsoft,
+            Google et Mozilla l'ont adopté pour remplacer du code C/C++ dans leurs infrastructures
+            critiques.
+          </p>
+          <div class="article-takeaway rust-take">
+            <strong>Ce que j'en retiens</strong>
+            La sécurité mémoire sans garbage collector est révolutionnaire.
+            Rust force à écrire du code correct dès la compilation, ce qui
+            réduit drastiquement les vulnérabilités de type buffer overflow.
+          </div>
+          <div class="tags">
+            <span class="tag tag-pink">Ownership</span>
+            <span class="tag tag-pink">Sécurité mémoire</span>
+            <span class="tag tag-dim">Système</span>
+          </div>
+        </div>
+
+        <div class="article-card rust-card">
+          <div class="article-meta">
+            <span class="article-source source-rust">Stack Overflow Survey</span>
+            <span class="article-date">2024</span>
+          </div>
+          <div class="article-title">Rust : langage le plus apprécié depuis 9 ans consécutifs</div>
+          <p class="article-summary">
+            Pour la 9e année consécutive, Rust arrive en tête du classement des langages
+            les plus aimés par les développeurs dans le sondage annuel de Stack Overflow.
+            Sa communauté croît fortement et l'écosystème Cargo / crates.io est très mature.
+          </p>
+          <div class="article-takeaway rust-take">
+            <strong>Ce que j'en retiens</strong>
+            La courbe d'apprentissage est réputée difficile mais les développeurs
+            qui le maîtrisent ne veulent plus revenir en arrière. C'est un investissement
+            qui vaut la peine sur le long terme.
+          </div>
+          <div class="tags">
+            <span class="tag tag-pink">Communauté</span>
+            <span class="tag tag-pink">Écosystème Cargo</span>
+            <span class="tag tag-dim">Tendances</span>
+          </div>
+        </div>
+
+        <div class="article-card rust-card">
+          <div class="article-meta">
+            <span class="article-source source-rust">The Verge / Linux</span>
+            <span class="article-date">2023 — 2024</span>
+          </div>
+          <div class="article-title">Rust entre dans le noyau Linux — un tournant historique</div>
+          <p class="article-summary">
+            En 2022, Linus Torvalds a accepté d'intégrer Rust comme second langage officiel
+            du noyau Linux. Les premiers modules Rust sont arrivés dans Linux 6.1.
+            Cela représente une rupture majeure après 30 ans de domination exclusive du C.
+          </p>
+          <div class="article-takeaway rust-take">
+            <strong>Ce que j'en retiens</strong>
+            Si Rust est assez bon pour le noyau Linux, c'est que ses garanties de sécurité
+            sont réelles et prouvées. Cela valide l'approche et montre l'avenir du
+            développement système.
+          </div>
+          <div class="tags">
+            <span class="tag tag-pink">Linux Kernel</span>
+            <span class="tag tag-pink">Système</span>
+            <span class="tag tag-dim">Historique</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- API PANEL -->
+    <div id="tab-api" class="tab-panel">
+      <div class="veille-grid">
+
+        <div class="article-card">
+          <div class="article-meta">
+            <span class="article-source source-api">MDN / Dev.to</span>
+            <span class="article-date">2024</span>
+          </div>
+          <div class="article-title">REST vs GraphQL vs gRPC : quelle architecture API choisir ?</div>
+          <p class="article-summary">
+            Les trois grandes architectures d'APIs ont chacune leurs forces.
+            REST est simple et universel, GraphQL permet au client de choisir ses données,
+            et gRPC excelle en performance pour les communications entre microservices.
+          </p>
+          <div class="article-takeaway">
+            <strong>Ce que j'en retiens</strong>
+            Pour les projets web classiques, REST reste le standard.
+            GraphQL devient intéressant quand on a des besoins de données complexes côté
+            front. gRPC est à connaître pour les architectures microservices.
+          </div>
+          <div class="tags">
+            <span class="tag tag-green">REST</span>
+            <span class="tag tag-green">GraphQL</span>
+            <span class="tag tag-green">gRPC</span>
+          </div>
+        </div>
+
+        <div class="article-card">
+          <div class="article-meta">
+            <span class="article-source source-api">OWASP</span>
+            <span class="article-date">2023 — 2024</span>
+          </div>
+          <div class="article-title">OWASP API Security Top 10 — Les failles à connaître</div>
+          <p class="article-summary">
+            L'OWASP publie le classement des 10 vulnérabilités API les plus critiques.
+            Parmi elles : l'authentification cassée, l'exposition d'objets (BOLA),
+            l'injection, et la mauvaise gestion des accès. Des failles très courantes
+            dans les APIs PHP que je développe.
+          </p>
+          <div class="article-takeaway">
+            <strong>Ce que j'en retiens</strong>
+            Sécuriser une API n'est pas optionnel. La connaissance de ces failles
+            m'aide directement dans mes projets PHP/PDO à écrire du code plus sûr
+            dès le départ.
+          </div>
+          <div class="tags">
+            <span class="tag tag-green">Sécurité</span>
+            <span class="tag tag-green">OWASP</span>
+            <span class="tag tag-dim">Authentification</span>
+          </div>
+        </div>
+
+        <div class="article-card">
+          <div class="article-meta">
+            <span class="article-source source-api">Postman / Swagger</span>
+            <span class="article-date">2024</span>
+          </div>
+          <div class="article-title">OpenAPI 3.1 et la documentation automatique des APIs</div>
+          <p class="article-summary">
+            La spécification OpenAPI (anciennement Swagger) permet de décrire une API REST
+            de façon standardisée. Postman, Insomnia et Swagger UI génèrent automatiquement
+            une documentation interactive lisible par humains et machines.
+          </p>
+          <div class="article-takeaway">
+            <strong>Ce que j'en retiens</strong>
+            Documenter ses APIs avec OpenAPI est une compétence professionnelle clé.
+            Cela facilite la collaboration en équipe et montre la rigueur du développeur.
+            Outil à maîtriser pour les projets BTS.
+          </div>
+          <div class="tags">
+            <span class="tag tag-green">OpenAPI</span>
+            <span class="tag tag-green">Documentation</span>
+            <span class="tag tag-dim">Postman</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  function switchTab(name, btn) {
+    // hide all panels
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    // deactivate all buttons
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    // activate chosen
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

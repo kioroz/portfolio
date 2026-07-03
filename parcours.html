@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parcours — Noha Beauvais Bamas</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .two-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+    }
+
+    .col-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .col-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .col-icon.edu  { background: rgba(0,229,195,0.1);  }
+    .col-icon.xp   { background: rgba(255,94,132,0.1); }
+
+    .col-label {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .col-label.edu { color: var(--accent); }
+    .col-label.xp  { color: var(--accent2); }
+
+    /* override timeline dot color for xp column */
+    .xp-timeline::before {
+      background: linear-gradient(to bottom, var(--accent2) 0%, transparent 90%);
+    }
+
+    .xp-timeline .tl-item::before {
+      background: var(--accent2);
+      box-shadow: 0 0 10px rgba(255,94,132,0.55);
+    }
+
+    .xp-timeline .tl-date { color: var(--accent2); }
+
+    /* mention badge */
+    .mention {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.22rem 0.55rem;
+      border-radius: 100px;
+      background: rgba(240,192,96,0.1);
+      border: 1px solid rgba(240,192,96,0.3);
+      color: var(--gold);
+      margin-left: 0.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .two-cols { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">NBB<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"     >Présentation</a></li>
+    <li><a href="parcours.html"  class="active">Parcours</a></li>
+    <li><a href="projets.html"   >Projets</a></li>
+    <li><a href="missions.html"  >Missions</a></li>
+    <li><a href="veille.html"    >Veille Tech</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="wrapper">
+
+    <div class="page-header">
+      <div class="eyebrow">Mon histoire</div>
+      <h1>Parcours</h1>
+      <p class="sub">Formation académique et expériences professionnelles qui ont construit mes compétences.</p>
+    </div>
+
+    <div class="two-cols">
+
+      <!-- FORMATION -->
+      <div>
+        <div class="col-header">
+          <div class="col-icon edu">🎓</div>
+          <span class="col-label edu">Formation</span>
+        </div>
+
+        <div class="timeline">
+
+          <div class="tl-item" style="animation-delay:0.05s">
+            <div class="tl-date">2025 — 2026</div>
+            <div class="tl-title">BTS SIO — SLAM</div>
+            <div class="tl-place">Lycée, Massy — 1re année</div>
+            <div class="tl-desc">
+              BTS Services Informatiques aux Organisations, spécialité
+              <strong style="color:var(--text)">Solutions Logicielles et Applications Métiers</strong>.
+              Formation axée sur le développement d'applications, la gestion de bases de données,
+              la programmation orientée objet et la cybersécurité.
+            </div>
+            <div class="tags">
+              <span class="tag tag-green">Développement</span>
+              <span class="tag tag-green">BDD / SQL</span>
+              <span class="tag tag-purple">POO</span>
+              <span class="tag tag-purple">Cybersécurité</span>
+            </div>
+          </div>
+
+          <div class="tl-item" style="animation-delay:0.12s">
+            <div class="tl-date">2024 — 2025</div>
+            <div class="tl-title">Terminale Générale</div>
+            <div class="tl-place">Lycée, Savigny-sur-Orge</div>
+            <div class="tl-desc">
+              Spécialités <strong style="color:var(--text)">Numérique &amp; Sciences Informatiques (NSI)</strong>
+              et <strong style="color:var(--text)">Cinéma - Audiovisuel</strong>.
+              Approfondissement des algorithmes, structures de données et programmation Python.
+            </div>
+            <div class="tags">
+              <span class="tag tag-green">NSI</span>
+              <span class="tag tag-pink">Cinéma &amp; Audiovisuel</span>
+              <span class="tag tag-purple">Algorithmique</span>
+            </div>
+          </div>
+
+          <div class="tl-item" style="animation-delay:0.19s">
+            <div class="tl-date">2021 — 2024</div>
+            <div class="tl-title">Baccalauréat Général</div>
+            <div class="tl-place">Lycée, Île-de-France</div>
+            <div class="tl-desc">
+              Obtenu avec
+              <strong style="color:var(--text)">Mention Assez Bien</strong>.
+              Spécialités Numérique &amp; Sciences Informatiques et Cinéma - Audiovisuel.
+              Première exposition aux mathématiques de l'informatique et aux réseaux.
+            </div>
+            <div class="tags">
+              <span class="tag tag-gold">Mention AB ✓</span>
+            </div>
+          </div>
+
+        </div><!-- /timeline -->
+      </div>
+
+      <!-- EXPÉRIENCE PROFESSIONNELLE -->
+      <div>
+        <div class="col-header">
+          <div class="col-icon xp">💼</div>
+          <span class="col-label xp">Expérience</span>
+        </div>
+
+        <div class="timeline xp-timeline">
+
+          <div class="tl-item" style="animation-delay:0.08s">
+            <div class="tl-date">Juillet 2025</div>
+            <div class="tl-title">Agent de Service Hospitalier</div>
+            <div class="tl-place">Institut Curie — Service Pédiatrie</div>
+            <div class="tl-desc">
+              Mission en milieu hospitalier au sein du service pédiatrie de l'Institut Curie.
+              Travail en équipe dans un environnement exigeant, développement du sens de l'écoute,
+              rigueur et gestion du stress. Cette expérience a renforcé mes qualités humaines
+              et ma capacité d'adaptation.
+            </div>
+            <div class="tags">
+              <span class="tag tag-pink">Travail en équipe</span>
+              <span class="tag tag-pink">Rigueur</span>
+              <span class="tag tag-pink">Gestion du stress</span>
+            </div>
+          </div>
+
+          <div class="tl-item" style="animation-delay:0.16s">
+            <div class="tl-date">2025 — En cours</div>
+            <div class="tl-title">Projets académiques BTS SIO</div>
+            <div class="tl-place">Lycée Massy — SLAM</div>
+            <div class="tl-desc">
+              Réalisation de projets informatiques dans le cadre du BTS :
+              développement d'applications web full-stack, travail en binôme ou groupe,
+              gestion de version avec Git et rédaction de documentations techniques.
+            </div>
+            <div class="tags">
+              <span class="tag tag-purple">PHP / MySQL</span>
+              <span class="tag tag-purple">Git</span>
+              <span class="tag tag-green">HTML / CSS / JS</span>
+            </div>
+          </div>
+
+        </div><!-- /timeline -->
+
+        <!-- Langues -->
+        <div class="card" style="margin-top:2.5rem; animation-delay:0.25s">
+          <div class="section-heading">🌍 Langues</div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Français</span>
+              <span class="skill-pct">Natif</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" style="--w:100%; --delay:0.3s"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Anglais</span>
+              <span class="skill-pct">B2</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" style="--w:72%; --delay:0.4s"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /two-cols -->
+
+  </div>
+</main>
+
+</body>
+</html>
